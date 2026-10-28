@@ -12,10 +12,12 @@ public class RconClient {
     public volatile Rcon client;
 
     private int port;
+    private String host;
     private String password;
 
-    public RconClient(Logger logger, int port, String password) {
+    public RconClient(Logger logger, String host, int port, String password) {
         this.logger = logger;
+        this.host = host;
         this.port = port;
         this.password = password;
     }
@@ -26,9 +28,10 @@ public class RconClient {
     public void connect() {
         if (isConnected()) {
             logger.warn("Rcon 已连接，无需重复连接");
+            return;
         }
         try {
-            client = new Rcon("localhost", port, password);
+            client = new Rcon(host, port, password);
             logger.info("Rcon 连接成功！[port: {}]", port);
         } catch (AuthenticationException e) {
             logger.error("Rcon 认证失败，请检查配置项是否正确");
@@ -77,5 +80,8 @@ public class RconClient {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public void setHost(String host) {
+        this.host = host;
     }
 }

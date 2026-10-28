@@ -240,6 +240,7 @@ public class Config extends CommonConfig {
         if (!(rconObj instanceof Map)) return;
         @SuppressWarnings("unchecked") Map<String, Object> rconConfig = (Map<String, Object>) rconObj;
         rcon.setEnable((Boolean) rconConfig.getOrDefault("enable", false));
+        rcon.setHost((String) rconConfig.getOrDefault("host", "127.0.0.1"));
         rcon.setPort((Integer) rconConfig.getOrDefault("port", 25575));
         rcon.setPassword((String) rconConfig.getOrDefault("password", ""));
     }

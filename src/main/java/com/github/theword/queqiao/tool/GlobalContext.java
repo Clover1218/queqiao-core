@@ -102,7 +102,7 @@ public class GlobalContext {
     //
     private static void initRconClient() {
         if (config.getRcon().isEnable()) {
-            rconClient = new RconClient(logger, config.getRcon().getPort(), config.getRcon().getPassword());
+            rconClient = new RconClient(logger, config.getRcon().getHost(), config.getRcon().getPort(), config.getRcon().getPassword());
             rconClient.connect();
         } else {
             logger.info("Rcon 未启用，跳过 Rcon 客户端初始化");
