@@ -65,8 +65,8 @@ public class GlobalContext {
         messagePrefixJsonElement = initMessagePrefixJsonObject(config.getMessagePrefix());
         languageService.reload();
         ServerStatusCollector.initPingTarget(logger);
-        websocketManager.restart(commandReturner);
         restartRconClient();
+        websocketManager.restart(commandReturner);
         handleCommandReturnMessageService.sendReturnMessage(commandReturner, CommandConstant.RELOAD_CONFIG);
     }
 

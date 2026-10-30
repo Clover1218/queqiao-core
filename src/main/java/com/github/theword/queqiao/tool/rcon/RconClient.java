@@ -60,7 +60,10 @@ public class RconClient {
 
         try {
             logger.info("正在关闭 Rcon 客户端...");
-            tempClient.close();
+            if (tempClient.getSocket() != null) {
+                tempClient.getSocket().close();
+            }
+//            tempClient.close();
         } catch (Exception e) {
             logger.warn("Rcon 关闭过程中发生异常: {}", e.getMessage());
         }
